@@ -36,15 +36,14 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            script: |
-              IMAGE_NAME=${{ env.IMAGE_NAME }}
-              CONTAINER_NAME=${{ env.CONTAINER_NAME }}
-              IMAGE_TAG=${{ github.sha }}
-            
-              echo "Using $IMAGE_NAME:$IMAGE_TAG"
-            
-              docker pull $IMAGE_NAME:$IMAGE_TAG
-              docker stop $CONTAINER_NAME || true
-              docker rm $CONTAINER_NAME || true
-              docker run -d --name $CONTAINER_NAME -p 80:80 --restart always $IMAGE_NAME:$IMAGE_TAG
-              docker image prune -f
+            IMAGE_NAME=${{ env.IMAGE_NAME }}
+            CONTAINER_NAME=${{ env.CONTAINER_NAME }}
+            IMAGE_TAG=${{ github.sha }}
+          
+            echo "Using $IMAGE_NAME:$IMAGE_TAG"
+          
+            docker pull $IMAGE_NAME:$IMAGE_TAG
+            docker stop $CONTAINER_NAME || true
+            docker rm $CONTAINER_NAME || true
+            docker run -d --name $CONTAINER_NAME -p 80:80 --restart always $IMAGE_NAME:$IMAGE_TAG
+            docker image prune -f
