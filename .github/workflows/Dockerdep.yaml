@@ -36,7 +36,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            IMAGE_NAME=yuvan77/${{ env.IMAGE_NAME }}
+            IMAGE_NAME=${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}
             CONTAINER_NAME=${{ env.CONTAINER_NAME }}
             IMAGE_TAG=${{ github.sha }}
           
