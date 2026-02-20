@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  IMAGE_NAME: yuvan77/carweb-static-test
+  IMAGE_NAME: yuvan77/carweb-test
   CONTAINER_NAME: carweb
 
 jobs:
